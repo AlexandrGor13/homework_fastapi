@@ -6,7 +6,7 @@ help: ## Вывод справки
 
 .PHONY: setup
 setup: ## Установка проекта и pre-commit
-	@uv sync --no-dev
+	@uv sync
 	@uv run pre-commit autoupdate
 	@uv run pre-commit install
 
