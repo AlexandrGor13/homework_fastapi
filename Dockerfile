@@ -6,7 +6,7 @@ COPY pyproject.toml uv.lock app/
 WORKDIR app
 
 RUN pip3 install --upgrade pip && pip3 install uv
-RUN uv sync
+RUN uv sync --no-dev
 
 COPY ./ ./
 
