@@ -6,7 +6,7 @@ from fastapi import FastAPI, HTTPException, Body, Path
 from ml import translate
 from schemas import Text
 
-app = FastAPI()
+app = FastAPI(title="ML Model API")
 
 @app.get("/")
 def read_root():

@@ -15,7 +15,7 @@ def translate(original_text: Text, src: str, dest: str):
     current_model = model.get(f"{src}-{dest}")
     current_tokenizer = tokenizer.get(f"{src}-{dest}")
     translated_text = ""
-    if current_model:
+    if current_model and current_tokenizer:
         # подготовка входных данных
         tokenized_text = current_tokenizer([original_text.text], return_tensors='pt')
         # перевод
