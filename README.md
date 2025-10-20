@@ -6,6 +6,7 @@
 [Helsinki-NLP--opus-mt-en-ru](https://huggingface.co/Helsinki-NLP/opus-mt-en-ru)
 
 End-point ```/translation/ru-en/``` предоставляет возможность переводить текс с русского языка на английский, 
+```/translation/en-ru/``` переводит с английского на русский.
 
 ```json
 {
