@@ -1,7 +1,39 @@
 services:
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_DB: db
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    restart: always
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.3.2
+    command: start-dev
+    depends_on:
+      - postgres
+    environment:
+      DB_VENDOR: POSTGRES
+      DB_ADDR: postgres
+      DB_DATABASE: db
+      DB_USER: user
+      DB_SCHEMA: public
+      DB_PASSWORD: password
+      KEYCLOAK_USER: keycloakuser
+      KEYCLOAK_PASSWORD: keycloakpassword
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      PROXY_ADDRESS_FORWARDING: "true"
+      KEYCLOAK_LOGLEVEL: DEBUG
+    ports:
+      - "8080:8080"
+    volumes:
+      - keycloak_data:/opt/keycloak/data
+    restart: always
+
   app:
     build:
-      context: ./
+      context: .
       dockerfile: Dockerfile
     command:
       - uvicorn
@@ -12,4 +44,7 @@ services:
       - "8000"
     ports:
       - "8000:8000"
+
+volumes:
+  keycloak_data:
 

@@ -1,5 +1,6 @@
 .venv
 docker-compose.yml
-Dockerfile
+app/Dockerfile
 README.md
-test.py
+app/test.py
+Makefile

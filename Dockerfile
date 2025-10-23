@@ -1,13 +1,13 @@
-FROM python:3.13
+FROM python:3.12
 LABEL authors="alexandr"
 
-COPY pyproject.toml uv.lock app/
-
 WORKDIR app
+
+COPY pyproject.toml uv.lock ./
 
 RUN pip3 install --upgrade pip && pip3 install uv
 RUN uv sync --no-dev
 
-COPY ./ ./
+COPY app/ ./
 
 ENV PATH="/app/.venv/bin:$PATH"
