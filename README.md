@@ -43,6 +43,8 @@ Create role (admin, user)
 
 Create client (ml-fastapi) 
 
+Create users (admin, user)
+
 
 #### API Endpoints
 Получить токен доступа
